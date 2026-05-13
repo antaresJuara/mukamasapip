@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budiono Siregar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="/mukamasapip/css/style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div>
+      <div class="logo-text">Budiono Siregar</div>
+      <div class="logo-sub">Monitoring System</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div id="clock">--:--:--</div>
+    <div id="status-badge" class="disconnected">
+      <span class="dot"></span>
+      <span id="status-text">DISCONNECTED</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- BATTERY -->
+  <div class="card">
+    <div class="scanline"></div>
+    <div class="card-label">Battery</div>
+    <div class="battery-wrap">
+      <div class="battery-icon" id="bat-icon">
+        <div class="battery-fill" id="bat-fill"></div>
+      </div>
+      <div>
+        <div class="battery-pct-text" id="bat-pct">--%</div>
+        <div class="card-unit">PERCENTAGE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADING / COMPASS -->
+  <div class="card">
+    <div class="scanline"></div>
+    <div class="card-label">Heading</div>
+    <div class="compass-wrap">
+      <div class="compass">
+        <div class="compass-ring">
+          <span class="compass-labels">
+            <span class="compass-n">N</span>
+            <span class="compass-s">S</span>
+            <span class="compass-e">E</span>
+            <span class="compass-w">W</span>
+          </span>
+          <div class="compass-needle" id="compass-needle">
+            <div class="needle-n"></div>
+            <div class="needle-s"></div>
+          </div>
+        </div>
+      </div>
+      <div class="heading-info">
+        <div class="big"><span id="heading-val">---</span>°</div>
+        <div class="sub">TRUE HEADING</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEED -->
+  <div class="card">
+    <div class="scanline"></div>
+    <div class="card-label">Speed</div>
+    <div class="speed-grid">
+      <div class="speed-item">
+        <div class="label">Ground</div>
+        <div class="val"><span id="speed-ms">-.-</span></div>
+        <div class="unit">m/s</div>
+      </div>
+      <div class="speed-item">
+        <div class="label">Knot</div>
+        <div class="val"><span id="speed-knot">-.-</span></div>
+        <div class="unit">kn</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAST DATA -->
+  <div class="card">
+    <div class="scanline"></div>
+    <div class="card-label">Last Data</div>
+    <div class="card-value" style="font-size:13px; color: var(--accent2);" id="last-ts">--</div>
+    <div class="card-unit" style="margin-top:8px;">UTC TIMESTAMP</div>
+  </div>
+
+  <!-- COORDINATES -->
+  <div class="card col-2">
+    <div class="scanline"></div>
+    <div class="card-label">Position</div>
+    <div class="coord-grid">
+      <div class="coord-item">
+        <div class="label">Latitude</div>
+        <div class="val" id="lat">--.------</div>
+      </div>
+      <div class="coord-item">
+        <div class="label">Longitude</div>
+        <div class="val" id="lon">---.------</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYSTEM LOG -->
+  <div class="card col-2">
+    <div class="card-label">System Log</div>
+    <div id="log-box"></div>
+  </div>
+
+  <!-- TRAJECTORY MAP -->
+  <div class="trajectory">
+    <div class="trajectory-mapping" id="map">
+      <span class="trajectory-title" id="map-title">
+        Trajectory Mapping
+      </span>
+    </div>
+  </div>
+
+</main>
+
+<div id="last-update">Menunggu data...</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/mukamasapip/js/script.js"></script>
+
+</body>
+</html>
